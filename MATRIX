@@ -1,0 +1,19 @@
+mat = [[57, 60, 69],
+ [34, 56, 45]]
+X = 60
+total_rows = len(mat)
+total_cols = len(mat[0])
+row = 0
+col = total_cols - 1
+while row < total_rows and col >= 0:
+    current = mat[row][col]
+    if current == X: 
+        print("Found it!")
+        break 
+    elif current > X:
+        col -= 1
+    else:
+        row += 1
+else:
+    print("Not found")
+
