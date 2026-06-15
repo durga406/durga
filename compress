@@ -1,0 +1,15 @@
+def compress(S):
+    res = ""
+    i = 0
+    while i < len(S):
+        char = S[i]
+        count = 0
+        while i < len(S) and S[i] == char:
+            count += 1
+            i += 1
+        res += char
+        if count > 1:
+            res += str(count)
+    return res
+
+print(compress("AAACCCBBD"))
