@@ -1,3 +1,5 @@
 s="have a nice day"
-rev=s[::-1]
-print(rev)
+word=s.split()
+rev=word[::-1]
+rev1="". join(rev)
+print(rev1)
