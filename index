@@ -1,0 +1,4 @@
+array=[0,5,6,7]
+val=6
+ind_val=array.index(val)
+print(ind_val)
