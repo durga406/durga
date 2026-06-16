@@ -1,0 +1,45 @@
+class Solution {
+    public int getLength(int[] nums) {
+        int n = nums.length;
+        int ans = 1;
+
+        for (int i = 0; i < n; i++) {
+            Map<Integer, Integer> nf = new HashMap<>();
+            TreeMap<Integer, Integer> ff = new TreeMap<>();
+            for (int j = i; j < n; j++) {
+                int old = nf.getOrDefault(nums[j], 0);
+
+                if (old > 0) {
+                    int c = ff.get(old) - 1;
+                    if (c == 0) {
+                        ff.remove(old);
+                    } else {
+                        ff.put(old, c);
+                    }
+                }
+
+                int newf=old+1;
+                nf.put(nums[j],newf);
+                ff.put(newf,ff.getOrDefault(newf,0)+1);
+                int distinct=nf.size();
+                boolean condition=false; 
+                if(distinct==1)
+                {
+                    condition=true;
+                }
+                if(ff.size()==2 ) {
+                    if(ff.lastKey()== 2*ff.firstKey()){
+                    condition =true;
+                    }
+                }
+
+                if(condition == true)
+                {
+                    ans=Math.max(ans,j-i+1);
+                }
+            }
+        }
+
+        return ans;
+    }
+}
