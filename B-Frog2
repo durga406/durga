@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int n, k;
+    if (scanf("%d %d", &n, &k) != 2) return 0;
+    int h[n];
+    int dp[n];
+    for (int i = 0; i < n; i++) {
+        if (scanf("%d", &h[i]) != 1) return 0;
+    }
+    dp[0] = 0;
+    for (int i = 1; i < n; i++) {
+        int min_cost = 2e9;
+        for (int j = 1; j <= k; j++) {
+            if (i - j >= 0) {
+                int current_cost = dp[i - j] + abs(h[i] - h[i - j]);
+                if (current_cost < min_cost) {
+                    min_cost = current_cost;
+                }
+            }
+        }
+        dp[i] = min_cost;
+    }
+
+     printf("%d\n", dp[n - 1]);
+
+    return 0;
+}
