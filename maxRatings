@@ -1,0 +1,24 @@
+class Solution:
+    def maxRatings(self, units):
+
+        n = len(units)
+        m = len(units[0])
+
+        for row in units:
+            row.sort()
+
+        if m == 1:
+            return sum(row[0] for row in units)
+
+        mini1 = float('inf')
+        mini2 = float('inf')
+
+        total = 0
+
+        for row in units:
+            mini1 = min(mini1, row[0])
+            mini2 = min(mini2, row[1])
+
+            total += row[1]
+
+        return total + mini1 - mini2
