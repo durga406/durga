@@ -1,0 +1,17 @@
+from collections import Counter
+
+n = int(input("Enter number of lines: "))
+
+for _ in range(n):
+    line = input()
+
+    freq = Counter(ch for ch in line if ch.isalpha())
+
+    max_freq = max(freq.values())
+
+    capitals = sorted([ch for ch in freq if ch.isupper() and freq[ch] == max_freq])
+    smalls = sorted([ch for ch in freq if ch.islower() and freq[ch] == max_freq])
+
+    result = capitals + smalls
+
+    print("".join(result))
