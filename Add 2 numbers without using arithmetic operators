@@ -1,0 +1,7 @@
+def add_without_operator(a, b):
+    while b != 0:
+        carry = a & b
+        a = a ^ b
+        b = carry << 1
+    return a
+print(add_without_operator(5, 7))  # Output: 12
